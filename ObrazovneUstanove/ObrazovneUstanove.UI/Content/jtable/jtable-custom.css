@@ -1,0 +1,203 @@
+﻿/* jTable metro style theme - Blue
+ * Created by Halil İbrahim Kalkan
+ * http://www.jtable.org
+ */
+body {
+    font-family: 'open_sansregular',Helvetica,Arial,sans-serif !important;
+}
+.wizard-steps li .step {
+    cursor: pointer;
+}
+div.jtable-main-container > div.jtable-title {
+    background-color: #438eb9;
+    padding-left: 10px;
+}
+div.jtable-main-container > div.jtable-title div.jtable-title-text {
+    color: #fff;
+    font-family: 'open_sansregular',Helvetica,Arial,sans-serif !important;
+    font-size: 19px;
+    font-weight: 300;
+    line-height: 38px;
+    min-height: 38px;
+}
+div.jtable-main-container {
+    background: none repeat scroll 0 0 #fff;
+    border: 1px solid #ddd;
+    font-family: 'open_sansregular',Helvetica,Arial,sans-serif !important;
+    font-size: 13px;
+    font-weight: 300;
+    line-height: 1.3;
+}
+div.jtable-main-container table.jtable {
+    border: 0;
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+.jtable > thead > tr {
+    background: linear-gradient(to bottom, #f8f8f8 0px, #ececec 100%) repeat-x scroll 0 0 #f2f2f2;
+    color: #707070;
+    font-weight: 400;
+}
+div.jtable-main-container table.jtable > thead th {
+    color: #707070;
+    font-family: 'open_sansregular',Helvetica,Arial,sans-serif !important;
+    font-size: 13px;
+    font-weight: 700;
+    padding:8px;
+}
+div.jtable-main-container table.jtable > thead th.jtable-column-header div.jtable-column-header-container {
+    height: 24px;
+    margin-left: 0;
+}
+div.jtable-main-container table.jtable > tbody > tr.jtable-data-row > td {
+    padding: 8px;
+}
+div.jtable-main-container table.jtable > tbody > tr.jtable-row-even {
+    background-color: #f9f9f9;
+}
+div.jtable-main-container table.jtable > tbody > tr:hover {
+  background: #f5f5f5;
+}
+div.jtable-main-container > div.jtable-bottom-panel {
+    color: #393939;
+    font-size: 13px;
+    background-color: #eff3f8;
+    border-bottom: 1px solid #ddd;
+    border-top: 1px solid #ddd;
+    padding: 12px 0 6px;
+    overflow:hidden;
+}
+div.jtable-main-container table.jtable > tbody > tr.jtable-row-selected {
+    color: #393939;
+}
+div.jtable-main-container > div.jtable-bottom-panel {
+
+}
+.jtable-left-area {
+    padding: 0 12px;
+    width: 50%;
+    float:left;
+}
+.jtable-right-area {
+    float: right;
+    line-height: 45px;
+    padding: 0 12px;
+    width: 50%;
+}
+.jtable-page-info {
+    float: right;
+}
+div.jtable-main-container > div.jtable-bottom-panel {
+    border:none;
+}
+div.jtable-main-container > div.jtable-bottom-panel .jtable-page-list .jtable-page-number, div.jtable-main-container > div.jtable-bottom-panel .jtable-page-list .jtable-page-number-space, div.jtable-main-container > div.jtable-bottom-panel .jtable-page-list .jtable-page-number-first, div.jtable-main-container > div.jtable-bottom-panel .jtable-page-list .jtable-page-number-last, div.jtable-main-container > div.jtable-bottom-panel .jtable-page-list .jtable-page-number-previous, div.jtable-main-container > div.jtable-bottom-panel .jtable-page-list .jtable-page-number-next, div.jtable-main-container > div.jtable-bottom-panel .jtable-page-list .jtable-page-number-active {
+    background-color: #438eb9;
+    color: #fff;
+    margin: 1px;
+    padding: 6px 12px;
+    cursor:pointer;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.4);
+}
+div.jtable-main-container > div.jtable-bottom-panel .jtable-page-list .jtable-page-number:hover,
+div.jtable-main-container > div.jtable-bottom-panel .jtable-page-list .jtable-page-number-first:hover,
+div.jtable-main-container > div.jtable-bottom-panel .jtable-page-list .jtable-page-number-last:hover,
+div.jtable-main-container > div.jtable-bottom-panel .jtable-page-list .jtable-page-number-previous:hover,
+div.jtable-main-container > div.jtable-bottom-panel .jtable-page-list .jtable-page-number-next:hover {
+  background-color: #4fabff;
+  cursor:pointer;
+}
+
+div.jtable-main-container > div.jtable-title div.jtable-toolbar span.jtable-toolbar-item, .jtable-toolbar-item-add-record {
+    background-color: #e7e7e7;
+    border: 4px solid #e7e7e7;
+    color: #888 !important;
+    line-height: 1.39em;
+}
+div.jtable-main-container > div.jtable-title div.jtable-toolbar span.jtable-toolbar-item.jtable-toolbar-item-hover, .jtable-toolbar-item-add-record:hover {
+  background-color: #d9d9d9;
+  padding-bottom: 2px;
+}
+div.jtable-main-container div.jtable-title div.jtable-toolbar span.jtable-toolbar-item span.jtable-toolbar-item-icon {
+    display:none;
+}
+div.jtable-main-container div.jtable-title div.jtable-toolbar span.jtable-toolbar-item span.jtable-toolbar-item-text {
+    margin: 2px 4px 2px 0;
+}
+div.jtable-main-container table.jtable > tbody > tr.jtable-data-row > td > .jtable-edit-command-button {
+    background: url("edit.png") no-repeat scroll 50% 50% #6fb3e0;
+    height: 26px;
+    opacity: 1;
+    width: 26px;
+}
+div.jtable-main-container table.jtable > tbody > tr.jtable-data-row > td > .jtable-delete-command-button {
+    background: url("delete.png") no-repeat scroll 50% 50% #d15b47;
+    height: 26px;
+    opacity: 1;
+    width: 26px;
+}
+
+div.jtable-main-container table.jtable > thead th.jtable-column-header-sortable div.jtable-column-header-container {
+  background: url('column-sortable.png') no-repeat right;
+}
+div.jtable-main-container table.jtable > thead th.jtable-column-header-sorted-asc div.jtable-column-header-container {
+  background: url('column-asc.png') no-repeat right;
+}
+div.jtable-main-container table.jtable > thead th.jtable-column-header-sorted-desc div.jtable-column-header-container {
+  background: url('column-desc.png') no-repeat right;
+}
+.ui-dialog-buttonset .ui-button {
+    background-image: none !important;
+    background-color: #abbac3;
+    border-radius: 0;
+    box-shadow: none !important;
+    color: #fff !important;
+    font-weight: 400;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25) !important;
+    transition: all 0.15s ease 0s;
+    border-width: 0;
+}
+.ui-dialog-buttonset .ui-button:hover, .ui-dialog-buttonset .ui-button:focus {
+    background-color: #8b9aa3;
+}
+.ui-button-text-only .ui-button-text {
+    padding: 0.6em 1.2em;
+}
+#AddRecordDialogSaveButton {
+    background:#428bca;
+}
+#AddRecordDialogSaveButton:hover, #AddRecordDialogSaveButton:focus {
+    background:#1b6aaa;
+}
+#EditDialogSaveButton {
+    background:#428bca;
+}
+#EditDialogSaveButton:hover, #EditDialogSaveButton:focus {
+    background:#1b6aaa;
+}
+#DeleteDialogButton {
+    background:#d15b47;
+}
+#DeleteDialogButton:hover, #DeleteDialogButton:focus {
+    background:#b74635;
+}
+.jtable-child-table-container {
+    margin: 5px 5px 5px 25px;
+}
+.jtable-child-table-container div.jtable-main-container > div.jtable-title {
+    background: #abbac3;
+}
+.jtable > tbody > tr > td, .table > tbody > tr > th, .jtable > tfoot > tr > td, .jtable > tfoot > tr > th, .jtable > thead > tr > td, .jtable > thead > tr > th {
+    border: 1px solid #ddd;
+    line-height: 1.42857;
+    padding: 8px;
+}
+div.jtable-main-container table.jtable tbody tr.jtable-no-data-row {
+    text-align: left;
+}
+span.jtable-column-header-text {
+    padding-right: 20px;
+    white-space: nowrap;
+}
+table.jtable.table {
+    margin-bottom: 0px;
+}
