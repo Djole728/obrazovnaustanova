@@ -1,0 +1,364 @@
+﻿@model ObrazovneUstanove.UI.Models.PrijavaIndexViewModel
+@{
+    ViewBag.Title = "Wizard";
+}
+
+<h2>Wizard</h2>
+
+
+
+
+<div class="row form_wizard wizard_horizontal" id="wizard" data-hidden-name="PredmetId">
+    @{ short counter = 0;}
+    @if (Model.KorakViewModels.Count > 1)
+    {
+        <ul class="wizard-steps">
+            @foreach (var item in Model.KorakViewModels)
+            {
+                counter++;
+                <li class="clickable" data-target="#container" data-url="@item.Url" style="min-width: 5.0%; max-width: 5.0%;" data-skip-post="@item.SkipPost">
+                    <span class="step" data-placement="bottom" data-rel="tooltip" data-original-title="@counter . @item.Naziv">@counter</span>
+                </li>
+            }
+        </ul>
+    }
+
+    @if (Model.KorakViewModels.Count == 1)
+    {
+        counter++;
+        <ul class="wizard_steps onestep">
+            @foreach (var item in Model.KorakViewModels)
+            {
+                <li class="clickable" data-target="#container" data-url="@item.Url" style="min-width: 5.0%; max-width: 5.0%;" data-skip-post="@item.SkipPost">
+                    <span class="step" data-placement="bottom" data-rel="tooltip" data-original-title="@counter . @item.Naziv">@counter</span>
+                </li>
+            }
+        </ul>
+    }
+
+
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h4 id="containerTitle" class="widget-title bigger lighter"></h4>
+
+                @if (!Model.ReadOnly)
+                {
+                    <div class="widget-toolbar" id="navigacija">
+                        <button data-not-visible="1" class="btn btn-sm btn-prev prev" data-skip-confirm="true">
+                            <i class="fa fa-arrow-left"></i>
+                            Prethodna
+                        </button>
+                        <button data-not-visible="@counter" class="btn btn-sm btn-info btn-next next" data-upload-confirm="true">
+                            Sljedeća
+                            <i class="fa fa-arrow-right icon-on-right"></i>
+                        </button>
+                        @if (!Model.HideKrajButton)
+                        {
+                            <button data-visible="@counter" class="btn btn-sm btn-success btn-next end" data-url="/Predmet/Detalji">
+                                Kraj
+                                <i class="fa fa-arrow-right icon-on-right"></i>
+                            </button>
+                        }
+                    </div>
+                }
+            </div>
+
+            <div class="x_content">
+                <div class="tab-content">
+                    <div id="container" class="step-pane active">
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script type="text/javascript">
+        var $container;
+        $(function () {
+            initConfirm();
+            $container = $("#container");
+            $('ul.wizard-steps > li > span').tooltip();
+
+            stopLoad = false;
+            clickedElement = null;
+            hiddenParamName = $('#wizard').attr('data-hidden-name');
+
+            $(".wizard-steps li").click(function () {
+                //if ($(this).hasClass('clickable'))
+                {
+                    clickedElement = $(this);
+                    confirmExit();
+                    if (!stopLoad) {
+
+                        prikazivanjePrethodnaSlijedecaKraj($(this).index());
+                        var dataUrl = $(this).attr("data-url");
+                        var url = dataUrl + '/' + $('#' + hiddenParamName).val();
+                        $('#container').empty();
+                        $('.wizard-steps li').removeClass('active complete clickable');
+                        $(this).addClass("active");
+                        $(this).prevAll().addClass('complete clickable');
+                        $('#containerTitle').text($(this).children().attr("data-original-title"));
+                        $.get(url, function (data) {
+                            $('#container').empty().append(data);
+                            if ($('#ReadOnly').val() != "False") {
+                                $('form.form-horizontal').addClass('skipConfirmOnExit');
+                            }
+                        }).done(function () {
+
+                            $('form').find('input[type=text]:not(.date-picker),textarea,select,radio,checkbox').filter(':visible:first').focus();
+                            window.location.hash = dataUrl;
+                            //initAutoComplete();
+                            //reapplyValidator();
+                            //disableTrajanjePrivrednogDrustva();
+                            //initConfirm(); initChosen();
+                            //disableSpoljnoTrgovinskaDjelatnost();
+                            //disableAdresaDostaveSudskeOdluke();
+                            //initDatepicker();
+                            //disableInputFields();
+                        });
+                    }
+
+                }
+            });
+
+            $('a').click(function (e) {
+                clickedElement = $(this);
+                var target = (clickedElement.attr('target') != undefined) ? clickedElement.attr('target') : '_self';
+                e.preventDefault();
+
+                if (formmodified == 1 && clickedElement.attr('href') != '#' && clickedElement.attr('data-skip-confirm') == undefined) {
+                    confirmExit();
+                }
+                else if (formmodified == 1 && clickedElement.attr('data-skip-confirm') == 'true') {
+                    formmodified = 0;
+                    window.open(clickedElement.attr('href'), target);
+                }
+                else {
+                    window.open(clickedElement.attr('href'), target);
+                }
+            });
+
+            var wizard = $(".wizard-steps");
+            if (wizard.length > 0) {
+                var url = window.location.hash.split('#')[1];
+                var step = url ? $('.wizard-steps li[data-url="' + url + '"]')[0] : undefined;
+                if (url && step) {
+                    step.click();
+                } else {
+                    $(".wizard-steps li:nth-child(1)").trigger("click");
+                }
+            }
+
+            $(".prev").click(function () {
+                var selected = $(".wizard-steps").children(".active");
+                if ($(".end.skriveno").length == 0) {
+                    var skipTo = selected.index();
+                    $(".wizard-steps li:nth-child(" + skipTo + ")").addClass("clickable").trigger("click");
+                }
+                else {
+                    saveForm(selected, false, true);
+                }
+            });
+
+            $(".next").click(function () {
+                var selected = $(".wizard-steps").children(".active");
+                saveForm(selected);
+            });
+            $(".end").click(function () {
+                var $form = $container.find('form');
+                var action = $form.attr("action");
+                var formdata = $form.serialize() + '&' + hiddenParamName + '=' + $('#' + hiddenParamName).val();
+                var urlSuccess = $(this).attr('data-url') + '/' + $('#' + hiddenParamName).val();
+                var skipPost = $(".wizard-steps").children(".active").attr("data-skip-post");
+                if (skipPost === 'True') {
+                    $.ajax({
+                        type: 'POST',
+                        dataType: 'json',
+                        url: action,
+                        data: formdata,
+                        success: function (data) {
+                            if (data.Result == "OK") {
+                                formmodified = 0;
+                                $(location).attr('href', urlSuccess);
+                            } else {
+                                showDialog(data.Message);
+                            }
+                        },
+                        error: function (data) {
+                            console.log('fail');
+                        }
+                    });
+                }
+                else {
+                    $(location).attr('href', urlSuccess);
+                }
+            });
+        })
+
+        function confirmExit() {
+
+            stopLoad = false;
+
+            if (formmodified == 1) {
+
+                stopLoad = true;
+
+                $("#dialog-confirm").removeClass('hide').dialog({
+                    resizable: false,
+                    modal: true,
+                    title: "Sačuvaj?",
+                    title_html: true,
+                    buttons: [
+                    {
+                        html: "<i class='fa fa-save bigger-110'></i>&nbsp;Da",
+                        "class": "btn btn-success btn-xs",
+                        click: function () {
+                            if ($(".wizard-steps").length != 0) {
+                                saveForm($(".wizard-steps").children(".active"), true);
+                            }
+                            else {
+                                if ($forma.valid()) {
+                                    $forma.submit(function () {
+                                        formmodified = 0;
+                                        clickedElement.trigger('click');
+                                    });
+                                    $forma.submit();
+                                }
+                            }
+                            $(this).dialog("close");
+                        }
+                    }
+                    ,
+                    {
+                        html: "<i class='fa fa-exclamation-circle bigger-110'></i>&nbsp;Ne",
+                        "class": "btn btn btn-danger btn-xs",
+                        click: function () {
+                            formmodified = 0;
+                            clickedElement.trigger('click');
+                            $(this).dialog("close");
+                        }
+                    }
+                    ,
+                    {
+                        html: "<i class='fa fa-times bigger-110'></i>&nbsp;Odustani",
+                        "class": "btn btn-xs",
+                        click: function () {
+                            $(this).dialog("close");
+                        }
+                    }
+                    ]
+
+                });
+                $(".ui-dialog-titlebar-close").attr('title', 'Odustani');
+
+            }
+        }
+
+        function saveForm(selected, skipNextStep, isPrevius) {
+            var url = selected.attr("data-url");
+            var skipTo = isPrevius ? selected.index() : selected.index() + 2;
+            var skipPost = selected.attr("data-skip-post");
+            if (skipPost === 'True') {
+                var $form = $('#container').find('form');
+                if ($form.valid()) {
+                    var action = $form.attr("action");
+                    var formdata = $form.serialize() + '&' + hiddenParamName + '=' + $('#' + hiddenParamName).val();
+                    $.ajax({
+                        type: 'POST',
+                        dataType: 'json',
+                        url: action,
+                        data: formdata,
+                        success: function (data) {
+                            if (data.Result == "OK") {
+                                if (data.PreduzetnikId) {
+                                    $('#' + hiddenParamName).val(data.PreduzetnikId);
+                                }
+                                if (data.PredmetId) {
+                                    $('#' + hiddenParamName).val(data.PredmetId);
+                                }
+                                formmodified = 0;
+                                if (!skipNextStep) {
+
+                                    $(".wizard-steps li:nth-child(" + skipTo + ")").addClass("clickable").trigger("click");
+                                }
+                                else {
+                                    clickedElement.trigger('click');
+                                }
+                            } else {
+                                showDialog(data.Message);
+                            }
+                        },
+                        error: function (data) {
+                            console.log('fail');
+                        }
+                    });
+                }
+                else {
+                    stopLoad = true;
+                }
+            }
+            else if (skipPost == 'False') {
+                if (!skipNextStep) {
+                    $(".wizard-steps li:nth-child(" + skipTo + ")").addClass("clickable").trigger("click");
+                }
+            }
+        }
+        function initConfirm() {
+            formmodified = 0;
+
+            $('form.form-search').addClass('skipConfirmOnExit');
+
+            $('form:not(.skipConfirmOnExit) *').change(function () {
+                formmodified = 1;
+                $forma = $('form');
+            });
+
+            window.onbeforeunload = function () {
+
+                if (formmodified == 1) {
+                    return true;
+                }
+            }
+        }
+
+        function prikazivanjePrethodnaSlijedecaKraj(selected) {
+            selected = selected + 1;
+            var $prethodnaDataNotVisible = $(".prev").attr("data-not-visible");
+            var $slijedecaDataNotVisible = $(".next").attr("data-not-visible");
+            var $krajDataVisible = $(".end").attr("data-visible");
+
+            if (selected == $prethodnaDataNotVisible) {
+                $(".prev").addClass("skriveno");
+            }
+            if (selected != $prethodnaDataNotVisible) {
+                $(".prev").removeClass("skriveno");
+            }
+            if (selected == $slijedecaDataNotVisible) {
+                $(".next").addClass("skriveno");
+            }
+            if (selected != $slijedecaDataNotVisible) {
+                $(".next").removeClass("skriveno");
+            }
+
+            if (selected != $krajDataVisible) {
+                $(".end").addClass("skriveno");
+            }
+            if (selected == $krajDataVisible) {
+                $(".end").removeClass("skriveno");
+            }
+
+        }
+
+        $('button[type=submit]').click(function () { formmodified = 0; });
+    </script>
+}
+
+
+

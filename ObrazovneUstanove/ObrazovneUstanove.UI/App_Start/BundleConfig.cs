@@ -22,7 +22,8 @@ namespace ObrazovneUstanove.UI
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js",
-                      "~/bower_components/gentelella/build/js/custom.js"
+                      "~/bower_components/gentelella/build/js/custom.js",
+                      "~/bower_components/gentelella/vendors/jQuery-Smart-Wizard/js/jquery.smartWizard.js"
                       ));
 
             bundles.Add(new ScriptBundle("~/bundles/jTable").Include(
