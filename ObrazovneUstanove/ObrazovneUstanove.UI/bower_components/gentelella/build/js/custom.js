@@ -21,13 +21,17 @@ $(document).ready(function() {
         // reset height
         $RIGHT_COL.css('min-height', $(window).height());
 
+        console.log($(window).height());
+
         var bodyHeight = $BODY.outerHeight(),
             footerHeight = $BODY.hasClass('footer_fixed') ? 0 : $FOOTER.height(),
             leftColHeight = $LEFT_COL.eq(1).height() + $SIDEBAR_FOOTER.height(),
-            contentHeight = bodyHeight < leftColHeight ? leftColHeight : bodyHeight;
+            contentHeight = bodyHeight < leftColHeight ? leftColHeight : bodyHeight,
+            navBarMargine = parseInt($NAV_MENU.css('margin-bottom'), 10),
+            footerPadding = parseInt($FOOTER.css('padding-bottom'), 10);
 
         // normalize content
-        contentHeight -= $NAV_MENU.height() + footerHeight;
+        contentHeight -= bodyHeight < leftColHeight ? $NAV_MENU.height() + footerHeight : $NAV_MENU.height() + footerHeight +navBarMargine + footerPadding - 1;
 
         $RIGHT_COL.css('min-height', contentHeight);
     };
