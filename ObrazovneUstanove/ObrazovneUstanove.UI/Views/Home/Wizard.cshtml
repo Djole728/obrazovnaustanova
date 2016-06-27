@@ -42,11 +42,11 @@
     <div class="col-xs-12">
         <div class="x_panel">
             <div class="x_title">
-                <h4 id="containerTitle" class="widget-title bigger lighter"></h4>
+                <h2 id="containerTitle" class="widget-title bigger lighter"></h2>
 
                 @if (!Model.ReadOnly)
                 {
-                    <div class="widget-toolbar" id="navigacija">
+                    <div class="nav navbar-right panel_toolbox" id="navigacija">
                         <button data-not-visible="1" class="btn btn-sm btn-prev prev" data-skip-confirm="true">
                             <i class="fa fa-arrow-left"></i>
                             Prethodna
@@ -64,6 +64,7 @@
                         }
                     </div>
                 }
+                <div class="clearfix"></div>
             </div>
 
             <div class="x_content">

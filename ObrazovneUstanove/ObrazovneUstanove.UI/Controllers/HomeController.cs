@@ -34,15 +34,15 @@ namespace ObrazovneUstanove.UI.Controllers
                     KorakId = 1,
                     Naziv = "Prvi korak",
                     RedniBroj = 1,
-                    Url = Url.Action("About"),
-                    SkipPost = false
+                    Url = Url.Action("StepOne"),
+                    SkipPost = true
                 },
                 new KorakViewModel
                 {
                     KorakId = 2,
                     Naziv = "Prvi korak",
                     RedniBroj = 2,
-                    Url = Url.Action("Contact"),
+                    Url = Url.Action("StepTwo"),
                     SkipPost = true
                 },
                 new KorakViewModel
@@ -50,16 +50,16 @@ namespace ObrazovneUstanove.UI.Controllers
                     KorakId = 3,
                     Naziv = "Prvi korak",
                     RedniBroj = 3,
-                    Url = Url.Action("Test"),
-                    SkipPost = true
+                    Url = Url.Action("StepOne"),
+                    SkipPost = false
                 },
                 new KorakViewModel
                 {
                     KorakId = 4,
                     Naziv = "Prvi korak",
                     RedniBroj = 4,
-                    Url = Url.Action("Radi"),
-                    SkipPost = true
+                    Url = Url.Action("StepTwo"),
+                    SkipPost = false
                 },
             };
 
@@ -72,6 +72,28 @@ namespace ObrazovneUstanove.UI.Controllers
             };
 
             return View(viewModel);
+        }
+
+        public ActionResult StepOne()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public JsonResult StepOne(StepOneViewModel viewModel)
+        {
+            return Json(new { Result = "OK" });
+        }
+
+        public ActionResult StepTwo()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public JsonResult StepTwo(StepTwoViewModel viewModel)
+        {
+            return Json(new { Result = "OK" });
         }
     }
 }

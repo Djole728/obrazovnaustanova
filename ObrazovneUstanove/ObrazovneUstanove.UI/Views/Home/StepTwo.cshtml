@@ -1,0 +1,36 @@
+﻿@model ObrazovneUstanove.UI.Models.StepTwoViewModel
+@{
+    ViewBag.Title = "StepOne";
+    Layout = null;
+}
+
+<h2>StepTwo</h2>
+
+@using (Html.BeginForm(null, null, FormMethod.Post, new { @class = "form-horizontal form-label-left" }))
+{
+    <div class="form-group">
+        <div class="col-md-3 col-sm-3 col-xs-12">
+            @Html.LabelFor(model => model.Id, new { @class = "control-label" })
+        </div>
+        <div class="col-md-6 col-sm-6 col-xs-12">
+            @Html.TextBoxFor(model => model.Id, new { @class = "form-control" })
+        </div>
+        <div class="col-md-3 col-sm-3 col-xs-12">
+            @Html.ValidationMessageFor(model => model.Id)
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-3 col-sm-3 col-xs-12">
+            @Html.LabelFor(model => model.Name, new { @class = "control-label" })
+        </div>
+        <div class="col-md-6 col-sm-6 col-xs-12">
+            @Html.TextBoxFor(model => model.Name, new { @class = "form-control" })
+        </div>
+        <div class="col-md-3 col-sm-3 col-xs-12">
+            @Html.ValidationMessageFor(model => model.Name)
+        </div>
+    </div>
+}
+
+

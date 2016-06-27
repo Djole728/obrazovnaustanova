@@ -182,6 +182,8 @@
     <Compile Include="Models\KorakViewModel.cs" />
     <Compile Include="Models\KorisnikViewModel.cs" />
     <Compile Include="Models\PrijavaIndexViewModel.cs" />
+    <Compile Include="Models\StepTwoViewModel.cs" />
+    <Compile Include="Models\StepOneViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -5391,9 +5393,6 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\ai.0.22.9-build00167.js" />
     <Content Include="Scripts\ai.0.22.9-build00167.min.js" />
-    <Content Include="ApplicationInsights.config">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
@@ -7083,6 +7082,8 @@
     <Content Include="Views\Shared\_Navbar.cshtml" />
     <Content Include="Views\Shared\_Footer.cshtml" />
     <Content Include="Views\Home\Wizard.cshtml" />
+    <Content Include="Views\Home\StepOne.cshtml" />
+    <Content Include="Views\Home\StepTwo.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
