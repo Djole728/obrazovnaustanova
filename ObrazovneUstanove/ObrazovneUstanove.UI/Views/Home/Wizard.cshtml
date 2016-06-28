@@ -5,8 +5,7 @@
 
 <h2>Wizard</h2>
 
-
-
+@Html.HiddenFor(m => m.ReadOnly)
 
 <div class="row form_wizard wizard_horizontal" id="wizard" data-hidden-name="PredmetId">
     @{ short counter = 0;}
@@ -17,7 +16,7 @@
             {
                 counter++;
                 <li class="clickable" data-target="#container" data-url="@item.Url" style="min-width: 5.0%; max-width: 5.0%;" data-skip-post="@item.SkipPost">
-                    <span class="step" data-placement="bottom" data-rel="tooltip" data-original-title="@counter . @item.Naziv">@counter</span>
+                    <span class="step" data-placement="bottom" data-toggle="tooltip" title="@counter . @item.Naziv">@counter</span>
                 </li>
             }
         </ul>
@@ -30,7 +29,7 @@
             @foreach (var item in Model.KorakViewModels)
             {
                 <li class="clickable" data-target="#container" data-url="@item.Url" style="min-width: 5.0%; max-width: 5.0%;" data-skip-post="@item.SkipPost">
-                    <span class="step" data-placement="bottom" data-rel="tooltip" data-original-title="@counter . @item.Naziv">@counter</span>
+                    <span class="step" data-placement="bottom" data-toggle="tooltip" data-original-title="@counter . @item.Naziv">@counter</span>
                 </li>
             }
         </ul>
@@ -100,12 +99,13 @@
 
                         prikazivanjePrethodnaSlijedecaKraj($(this).index());
                         var dataUrl = $(this).attr("data-url");
-                        var url = dataUrl + '/' + $('#' + hiddenParamName).val();
+                        //var url = dataUrl + '/' + $('#' + hiddenParamName).val();
+                        var url = dataUrl;
                         $('#container').empty();
                         $('.wizard-steps li').removeClass('active complete clickable');
                         $(this).addClass("active");
                         $(this).prevAll().addClass('complete clickable');
-                        $('#containerTitle').text($(this).children().attr("data-original-title"));
+                        $('#containerTitle').text($(this).children().attr("title"));
                         $.get(url, function (data) {
                             $('#container').empty().append(data);
                             if ($('#ReadOnly').val() != "False") {
@@ -118,7 +118,7 @@
                             //initAutoComplete();
                             //reapplyValidator();
                             //disableTrajanjePrivrednogDrustva();
-                            //initConfirm(); initChosen();
+                            initConfirm(); //initChosen();
                             //disableSpoljnoTrgovinskaDjelatnost();
                             //disableAdresaDostaveSudskeOdluke();
                             //initDatepicker();
@@ -175,8 +175,10 @@
             $(".end").click(function () {
                 var $form = $container.find('form');
                 var action = $form.attr("action");
-                var formdata = $form.serialize() + '&' + hiddenParamName + '=' + $('#' + hiddenParamName).val();
-                var urlSuccess = $(this).attr('data-url') + '/' + $('#' + hiddenParamName).val();
+                //var formdata = $form.serialize() + '&' + hiddenParamName + '=' + $('#' + hiddenParamName).val();
+                //var urlSuccess = $(this).attr('data-url') + '/' + $('#' + hiddenParamName).val();
+                var formdata = $form.serialize();
+                var urlSuccess = $(this).attr('data-url');
                 var skipPost = $(".wizard-steps").children(".active").attr("data-skip-post");
                 if (skipPost === 'True') {
                     $.ajax({
@@ -204,11 +206,9 @@
         })
 
         function confirmExit() {
-
             stopLoad = false;
 
             if (formmodified == 1) {
-
                 stopLoad = true;
 
                 $("#dialog-confirm").removeClass('hide').dialog({
@@ -270,7 +270,8 @@
                 var $form = $('#container').find('form');
                 if ($form.valid()) {
                     var action = $form.attr("action");
-                    var formdata = $form.serialize() + '&' + hiddenParamName + '=' + $('#' + hiddenParamName).val();
+                    //var formdata = $form.serialize() + '&' + hiddenParamName + '=' + $('#' + hiddenParamName).val();
+                    var formdata = $form.serialize();
                     $.ajax({
                         type: 'POST',
                         dataType: 'json',
@@ -278,12 +279,12 @@
                         data: formdata,
                         success: function (data) {
                             if (data.Result == "OK") {
-                                if (data.PreduzetnikId) {
-                                    $('#' + hiddenParamName).val(data.PreduzetnikId);
-                                }
-                                if (data.PredmetId) {
-                                    $('#' + hiddenParamName).val(data.PredmetId);
-                                }
+                                //if (data.PreduzetnikId) {
+                                //    $('#' + hiddenParamName).val(data.PreduzetnikId);
+                                //}
+                                //if (data.PredmetId) {
+                                //    $('#' + hiddenParamName).val(data.PredmetId);
+                                //}
                                 formmodified = 0;
                                 if (!skipNextStep) {
 
@@ -355,6 +356,26 @@
                 $(".end").removeClass("skriveno");
             }
 
+        }
+
+        function showDialog(message) {
+            var $dialog = $('<div></div>')
+                   .html(message)
+                   .dialog({
+                       autoOpen: false,
+                       modal: true,
+                       title: "Greška",
+                       buttons: {
+                           Ok: {
+                               class: 'btn btn-xs btn-danger ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only ui-state-focus',
+                               text: 'OK',
+                               click: function () {
+                                   $(this).dialog("close");
+                               }
+                           }
+                       }
+                   });
+            $dialog.dialog('open');
         }
 
         $('button[type=submit]').click(function () { formmodified = 0; });

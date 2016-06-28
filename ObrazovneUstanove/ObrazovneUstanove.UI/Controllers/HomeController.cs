@@ -40,7 +40,7 @@ namespace ObrazovneUstanove.UI.Controllers
                 new KorakViewModel
                 {
                     KorakId = 2,
-                    Naziv = "Prvi korak",
+                    Naziv = "Drugi korak",
                     RedniBroj = 2,
                     Url = Url.Action("StepTwo"),
                     SkipPost = true
@@ -48,7 +48,7 @@ namespace ObrazovneUstanove.UI.Controllers
                 new KorakViewModel
                 {
                     KorakId = 3,
-                    Naziv = "Prvi korak",
+                    Naziv = "Treci korak",
                     RedniBroj = 3,
                     Url = Url.Action("StepOne"),
                     SkipPost = false
@@ -56,7 +56,7 @@ namespace ObrazovneUstanove.UI.Controllers
                 new KorakViewModel
                 {
                     KorakId = 4,
-                    Naziv = "Prvi korak",
+                    Naziv = "Cetvrti korak",
                     RedniBroj = 4,
                     Url = Url.Action("StepTwo"),
                     SkipPost = false

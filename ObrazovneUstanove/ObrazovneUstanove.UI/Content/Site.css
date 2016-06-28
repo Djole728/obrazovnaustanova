@@ -75,6 +75,9 @@
   font-size: 17px;
   color: #87ba21;
 }
+.skriveno {
+    display: none !important;
+}
 .wizard-steps li.complete:hover .step {
   -moz-transform: scale(1.1);
   -webkit-transform: scale(1.1);
