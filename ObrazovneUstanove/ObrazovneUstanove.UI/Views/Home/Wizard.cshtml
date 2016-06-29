@@ -116,7 +116,7 @@
                             $('form').find('input[type=text]:not(.date-picker),textarea,select,radio,checkbox').filter(':visible:first').focus();
                             window.location.hash = dataUrl;
                             //initAutoComplete();
-                            //reapplyValidator();
+                            reapplyValidator();
                             //disableTrajanjePrivrednogDrustva();
                             initConfirm(); //initChosen();
                             //disableSpoljnoTrgovinskaDjelatnost();
@@ -377,7 +377,10 @@
                    });
             $dialog.dialog('open');
         }
+        function reapplyValidator() {
 
+            $.validator.unobtrusive.parse($container.find('form'));
+        }
         $('button[type=submit]').click(function () { formmodified = 0; });
     </script>
 }

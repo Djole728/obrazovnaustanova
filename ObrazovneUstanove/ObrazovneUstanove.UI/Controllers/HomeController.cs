@@ -1,4 +1,5 @@
-﻿using ObrazovneUstanove.UI.Models;
+﻿using ObrazovneUstanove.UI.Custom.Extensions;
+using ObrazovneUstanove.UI.Models;
 using System.Collections.Generic;
 using System.Web.Mvc;
 
@@ -82,6 +83,10 @@ namespace ObrazovneUstanove.UI.Controllers
         [HttpPost]
         public JsonResult StepOne(StepOneViewModel viewModel)
         {
+            if (!ModelState.IsValid)
+            {
+                return Json(new { Result = "ERROR", Message = ModelState.UserFriendlyErrors() });
+            }
             return Json(new { Result = "OK" });
         }
 
