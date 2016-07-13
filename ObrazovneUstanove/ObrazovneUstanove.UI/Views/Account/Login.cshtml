@@ -1,0 +1,38 @@
+﻿@model ObrazovneUstanove.UI.Models.ObrazovneUstanoveLoginViewModel
+@{
+    ViewBag.Title = "Login";
+}
+
+<h2>Login</h2>
+
+@using (Html.BeginForm("Login", "Account", FormMethod.Post, new { @class = "" }))
+{
+    @Html.AntiForgeryToken()
+    <fieldset>
+        <div class="form-group">
+            @Html.LabelFor(m => m.UserName, new { @class = "col-sm-4 control-label" })
+            <div class="col-sm-8">
+                <span class="glyphicon glyphicon-user"></span>
+                @Html.TextBoxFor(m => m.UserName, new { @class = "form-control", placeholder = "Korisničko ime" })
+                <div class="text-danger">
+                    @Html.ValidationMessageFor(m => m.UserName)
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Password, new { @class = "col-sm-4 control-label" })
+            <div class="col-sm-8">
+                <span class="glyphicon glyphicon-lock"></span>
+                @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Lozinka" })
+                <div class="text-danger">
+                    @Html.ValidationMessageFor(m => m.Password)
+                </div>
+            </div>
+        </div>
+        @Html.ValidationSummary(true)
+    </fieldset>
+    <footer>
+        <button type="submit" class="btn btn-primary center-block">Prijavi se</button>
+    </footer>
+}
+

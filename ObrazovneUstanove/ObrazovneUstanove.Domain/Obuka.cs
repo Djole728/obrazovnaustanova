@@ -28,7 +28,7 @@ namespace ObrazovneUstanove.Domain
         public virtual System.Collections.Generic.ICollection<Polaznik> Polazniks { get; set; } // Many to many mapping
 
         // Foreign keys
-        public virtual Kur Kur { get; set; } // FK_Obuka_Kurs
+        public virtual Kurs Kurs { get; set; } // FK_Obuka_Kurs
 
         public Obuka()
         {

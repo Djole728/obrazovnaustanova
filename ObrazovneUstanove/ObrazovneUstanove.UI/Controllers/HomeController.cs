@@ -1,5 +1,6 @@
 ﻿using ObrazovneUstanove.UI.Custom.Extensions;
 using ObrazovneUstanove.UI.Models;
+using System;
 using System.Collections.Generic;
 using System.Web.Mvc;
 
@@ -99,6 +100,54 @@ namespace ObrazovneUstanove.UI.Controllers
         public JsonResult StepTwo(StepTwoViewModel viewModel)
         {
             return Json(new { Result = "OK" });
+        }
+
+        [HttpGet]
+        public ActionResult Test()
+        {
+            var viewModel = new TestViewModel
+            {
+                TestId = 1,
+                TestName = "Djole",
+                TestKorisnik = new List<KorisnikViewModel>
+                {
+                    new KorisnikViewModel
+                    {
+                        KorisnikId = 1,
+                        Ime = "Momo",
+                        Prezime = "Todorovic",
+                        DatumRodjenja = DateTime.Now,
+                        Zanimanje = "Test",
+                        MjestoRodjenjaOpstinaId = 1,
+                        ImeJednogRoditelja = "Brada",
+                        Pol = "M",
+                        StrucnaSpremaId = 1,
+                       Jmb = "1111111111111",
+                       PrebivalisteNaseljenoMjestoId = 1
+                    },
+                    new KorisnikViewModel
+                    {
+                        KorisnikId = 1,
+                        Ime = "Bobo",
+                        Prezime = "Buha",
+                        DatumRodjenja = DateTime.Now,
+                        Zanimanje = "Test",
+                        MjestoRodjenjaOpstinaId = 1,
+                        ImeJednogRoditelja = "Brada",
+                        Pol = "M",
+                        StrucnaSpremaId = 1,
+                       Jmb = "1111111111111",
+                       PrebivalisteNaseljenoMjestoId = 1
+                    },
+                }
+            };
+            return View(viewModel);
+        }
+
+        [HttpPost]
+        public ActionResult Test(TestViewModel viewModel)
+        {
+            return View(viewModel);
         }
     }
 }

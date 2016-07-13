@@ -20,13 +20,17 @@ namespace ObrazovneUstanove.Domain
         public int PolaznikId { get; set; } // PolaznikId (Primary key)
         public string Ime { get; set; } // Ime (length: 200)
         public string Prezime { get; set; } // Prezime (length: 200)
-        public int? ImeJednogRoditelja { get; set; } // ImeJednogRoditelja
-        public System.DateTime? DatumRodjenja { get; set; } // DatumRodjenja
-        public int? MjestoRodjenjaOpstinaId { get; set; } // MjestoRodjenjaOpstinaId
-        public int? PrebivalisteNaseljenoMjestoId { get; set; } // PrebivalisteNaseljenoMjestoId
-        public short? StrucnaSpremaId { get; set; } // StrucnaSpremaId
-        public int? Zanimanje { get; set; } // Zanimanje
+        public string ImeJednogRoditelja { get; set; } // ImeJednogRoditelja (length: 200)
+        public System.DateTime DatumRodjenja { get; set; } // DatumRodjenja
+        public int MjestoRodjenjaOpstinaId { get; set; } // MjestoRodjenjaOpstinaId
+        public int PrebivalisteNaseljenoMjestoId { get; set; } // PrebivalisteNaseljenoMjestoId
+        public short StrucnaSpremaId { get; set; } // StrucnaSpremaId
+        public string Zanimanje { get; set; } // Zanimanje (length: 200)
         public int SkolaId { get; set; } // SkolaId
+        public System.DateTime DatumKreiranja { get; set; } // DatumKreiranja
+        public int RadnikIdKreirao { get; set; } // RadnikIdKreirao
+        public bool IsDeleted { get; set; } // IsDeleted
+        public string Pol { get; set; } // Pol (length: 1)
 
         // Reverse navigation
         public virtual System.Collections.Generic.ICollection<Ispit> Ispits { get; set; } // Ispit.FK_Ispit_Polaznik

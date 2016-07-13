@@ -15,7 +15,7 @@ namespace ObrazovneUstanove.Domain
 
     // Kurs
     [System.CodeDom.Compiler.GeneratedCode("EF.Reverse.POCO.Generator", "2.20.1.0")]
-    public partial class Kur
+    public partial class Kurs
     {
         public int KursId { get; set; } // KursId (Primary key)
         public int SkolaId { get; set; } // SkolaId
@@ -30,7 +30,7 @@ namespace ObrazovneUstanove.Domain
         // Foreign keys
         public virtual Skola Skola { get; set; } // FK_Kurs_Skola
 
-        public Kur()
+        public Kurs()
         {
             Ispits = new System.Collections.Generic.List<Ispit>();
             Obukas = new System.Collections.Generic.List<Obuka>();

@@ -22,13 +22,13 @@ namespace ObrazovneUstanove.Domain
 
         // Reverse navigation
         public virtual System.Collections.Generic.ICollection<KorisnikSkolaUloga> KorisnikSkolaUlogas { get; set; } // KorisnikSkolaUloga.FK_KorisnikSkolaUloga_Skola
-        public virtual System.Collections.Generic.ICollection<Kur> Kurs { get; set; } // Kurs.FK_Kurs_Skola
+        public virtual System.Collections.Generic.ICollection<Kurs> Kurs { get; set; } // Kurs.FK_Kurs_Skola
         public virtual System.Collections.Generic.ICollection<Polaznik> Polazniks { get; set; } // Polaznik.FK_Polaznik_Skola
 
         public Skola()
         {
             KorisnikSkolaUlogas = new System.Collections.Generic.List<KorisnikSkolaUloga>();
-            Kurs = new System.Collections.Generic.List<Kur>();
+            Kurs = new System.Collections.Generic.List<Kurs>();
             Polazniks = new System.Collections.Generic.List<Polaznik>();
             InitializePartial();
         }

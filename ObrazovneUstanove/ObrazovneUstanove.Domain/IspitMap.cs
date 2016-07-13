@@ -35,7 +35,7 @@ namespace ObrazovneUstanove.Domain
             Property(x => x.BrojBodova).HasColumnName(@"BrojBodova").IsOptional().HasColumnType("decimal").HasPrecision(10,2);
 
             // Foreign keys
-            HasRequired(a => a.Kur).WithMany(b => b.Ispits).HasForeignKey(c => c.KursId).WillCascadeOnDelete(false); // FK_Ispit_Kurs
+            HasRequired(a => a.Kurs).WithMany(b => b.Ispits).HasForeignKey(c => c.KursId).WillCascadeOnDelete(false); // FK_Ispit_Kurs
             HasRequired(a => a.Polaznik).WithMany(b => b.Ispits).HasForeignKey(c => c.PolaznikId).WillCascadeOnDelete(false); // FK_Ispit_Polaznik
             InitializePartial();
         }

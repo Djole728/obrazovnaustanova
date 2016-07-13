@@ -21,7 +21,7 @@ namespace ObrazovneUstanove.Domain
         public System.Data.Entity.DbSet<Ispit> Ispits { get; set; } // Ispit
         public System.Data.Entity.DbSet<Korisnik> Korisniks { get; set; } // Korisnik
         public System.Data.Entity.DbSet<KorisnikSkolaUloga> KorisnikSkolaUlogas { get; set; } // KorisnikSkolaUloga
-        public System.Data.Entity.DbSet<Kur> Kurs { get; set; } // Kurs
+        public System.Data.Entity.DbSet<Kurs> Kurs { get; set; } // Kurs
         public System.Data.Entity.DbSet<NaseljnoMjesto> NaseljnoMjestoes { get; set; } // NaseljnoMjesto
         public System.Data.Entity.DbSet<Obuka> Obukas { get; set; } // Obuka
         public System.Data.Entity.DbSet<Opstina> Opstinas { get; set; } // Opstina
@@ -87,7 +87,7 @@ namespace ObrazovneUstanove.Domain
             modelBuilder.Configurations.Add(new IspitMap());
             modelBuilder.Configurations.Add(new KorisnikMap());
             modelBuilder.Configurations.Add(new KorisnikSkolaUlogaMap());
-            modelBuilder.Configurations.Add(new KurMap());
+            modelBuilder.Configurations.Add(new KursMap());
             modelBuilder.Configurations.Add(new NaseljnoMjestoMap());
             modelBuilder.Configurations.Add(new ObukaMap());
             modelBuilder.Configurations.Add(new OpstinaMap());
@@ -105,7 +105,7 @@ namespace ObrazovneUstanove.Domain
             modelBuilder.Configurations.Add(new IspitMap(schema));
             modelBuilder.Configurations.Add(new KorisnikMap(schema));
             modelBuilder.Configurations.Add(new KorisnikSkolaUlogaMap(schema));
-            modelBuilder.Configurations.Add(new KurMap(schema));
+            modelBuilder.Configurations.Add(new KursMap(schema));
             modelBuilder.Configurations.Add(new NaseljnoMjestoMap(schema));
             modelBuilder.Configurations.Add(new ObukaMap(schema));
             modelBuilder.Configurations.Add(new OpstinaMap(schema));

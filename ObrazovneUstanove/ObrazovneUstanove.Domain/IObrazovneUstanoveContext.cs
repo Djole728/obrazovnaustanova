@@ -18,7 +18,7 @@ namespace ObrazovneUstanove.Domain
         System.Data.Entity.DbSet<Ispit> Ispits { get; set; } // Ispit
         System.Data.Entity.DbSet<Korisnik> Korisniks { get; set; } // Korisnik
         System.Data.Entity.DbSet<KorisnikSkolaUloga> KorisnikSkolaUlogas { get; set; } // KorisnikSkolaUloga
-        System.Data.Entity.DbSet<Kur> Kurs { get; set; } // Kurs
+        System.Data.Entity.DbSet<Kurs> Kurs { get; set; } // Kurs
         System.Data.Entity.DbSet<NaseljnoMjesto> NaseljnoMjestoes { get; set; } // NaseljnoMjesto
         System.Data.Entity.DbSet<Obuka> Obukas { get; set; } // Obuka
         System.Data.Entity.DbSet<Opstina> Opstinas { get; set; } // Opstina

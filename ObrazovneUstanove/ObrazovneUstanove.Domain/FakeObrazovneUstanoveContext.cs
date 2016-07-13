@@ -19,7 +19,7 @@ namespace ObrazovneUstanove.Domain
         public System.Data.Entity.DbSet<Ispit> Ispits { get; set; }
         public System.Data.Entity.DbSet<Korisnik> Korisniks { get; set; }
         public System.Data.Entity.DbSet<KorisnikSkolaUloga> KorisnikSkolaUlogas { get; set; }
-        public System.Data.Entity.DbSet<Kur> Kurs { get; set; }
+        public System.Data.Entity.DbSet<Kurs> Kurs { get; set; }
         public System.Data.Entity.DbSet<NaseljnoMjesto> NaseljnoMjestoes { get; set; }
         public System.Data.Entity.DbSet<Obuka> Obukas { get; set; }
         public System.Data.Entity.DbSet<Opstina> Opstinas { get; set; }
@@ -34,7 +34,7 @@ namespace ObrazovneUstanove.Domain
             Ispits = new FakeDbSet<Ispit>("IspitId");
             Korisniks = new FakeDbSet<Korisnik>("KorisnikId");
             KorisnikSkolaUlogas = new FakeDbSet<KorisnikSkolaUloga>("KorisnikSkolaUlogaId");
-            Kurs = new FakeDbSet<Kur>("KursId");
+            Kurs = new FakeDbSet<Kurs>("KursId");
             NaseljnoMjestoes = new FakeDbSet<NaseljnoMjesto>("NaseljenoMjestoId");
             Obukas = new FakeDbSet<Obuka>("ObukaId");
             Opstinas = new FakeDbSet<Opstina>("OpstinaId");

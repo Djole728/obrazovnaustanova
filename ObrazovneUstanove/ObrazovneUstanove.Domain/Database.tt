@@ -69,10 +69,11 @@
     Inflector.PluralizationService = new EnglishPluralizationService(new[]
     {
         // Create custom ("Singular", "Plural") forms for one-off words as needed
-        new CustomPluralizationEntry("LiveQuiz", "LiveQuizzes"),
-        new CustomPluralizationEntry("Course", "Courses"),
-        new CustomPluralizationEntry("CustomerStatus", "CustomerStatus"), // Use same value to prevent pluralisation
-        new CustomPluralizationEntry("EmployeeStatus", "EmployeeStatus")
+        //new CustomPluralizationEntry("LiveQuiz", "LiveQuizzes"),
+        //new CustomPluralizationEntry("Course", "Courses"),
+        //new CustomPluralizationEntry("CustomerStatus", "CustomerStatus"), // Use same value to prevent pluralisation
+       // new CustomPluralizationEntry("EmployeeStatus", "EmployeeStatus"),
+		new CustomPluralizationEntry("Kurs", "Kurs")
     });
 
 

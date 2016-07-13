@@ -34,7 +34,7 @@ namespace ObrazovneUstanove.Domain
             Property(x => x.Cijena).HasColumnName(@"Cijena").IsRequired().HasColumnType("decimal").HasPrecision(10,2);
 
             // Foreign keys
-            HasRequired(a => a.Kur).WithMany(b => b.Obukas).HasForeignKey(c => c.KursId).WillCascadeOnDelete(false); // FK_Obuka_Kurs
+            HasRequired(a => a.Kurs).WithMany(b => b.Obukas).HasForeignKey(c => c.KursId).WillCascadeOnDelete(false); // FK_Obuka_Kurs
             HasMany(t => t.Polazniks).WithMany(t => t.Obukas).Map(m =>
             {
                 m.ToTable("PolaznikObuka", "dbo");

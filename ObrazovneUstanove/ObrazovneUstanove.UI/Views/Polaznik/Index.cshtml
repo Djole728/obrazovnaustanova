@@ -1,0 +1,84 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<div id="jTableContainer">
+</div>
+
+@section Scripts {
+    <script type="text/javascript">
+        $(function () {
+            $('#jTableContainer').jtable({
+                title: 'Polaznik',
+                sorting: true,
+                defaultSorting: 'Ime ASC',
+                paging: true,
+                pageSize: 5,
+                actions: {
+                    listAction: '/Polaznik/List/',
+                    createAction: '/Polaznik/Create',
+                    updateAction: '/Polaznik/Update',
+                    deleteAction: '/Polaznik/Delete/'
+                },
+                fields: {
+                    PolaznikId: {
+                        key: true,
+                        create: false,
+                        edit: false,
+                        list: false
+                    },
+                    Ime: {
+                        title: 'Ime',
+                    },
+                    ImeJednogRoditelja: {
+                        title: 'Ime jednog roditelja',
+                    },
+                    Prezime: {
+                        title: 'Prezime',
+                    },
+                    Pol: {
+                        title: 'Pol',
+                        options: { 'M': 'Muški', 'Ž': 'Ženski' },
+                        type: 'radiobutton',
+                    },
+                    DatumRodjenja: {
+                        title: 'Datum rođenja',
+                        type: 'date'
+                    },
+                    MjestoRodjenjaOpstinaId: {
+                        title: 'Mjesto rođenja',
+                        sorting: false,
+                        inputClass: 'chosen-select',
+                        options: function (data) {
+                            return "/Opstina/Options";
+                        }
+                    },
+                    PrebivalisteNaseljenoMjestoId: {
+                        title: 'Prebivalište',
+                        sorting: false,
+                        inputClass: 'chosen-select',
+                        options: function (data) {
+                            return "/NaseljenoMjesto/Options";
+                        }
+                    },
+                    StrucnaSpremaId: {
+                        title: 'Stručna sprema',
+                        sorting: false,
+                        inputClass: 'chosen-select',
+                        options: function (data) {
+                            return "/StrucnaSprema/Options";
+                        }
+                    },
+                    Zanimanje: {
+                        title: 'Zanimanje',
+                    },
+                },
+            });
+            $('#jTableContainer').jtable('load');
+        });
+    </script>
+}
+

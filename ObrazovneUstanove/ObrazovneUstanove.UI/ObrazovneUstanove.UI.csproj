@@ -170,20 +170,28 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\KorisnikController.cs" />
     <Compile Include="Controllers\NaseljenoMjestoController.cs" />
+    <Compile Include="Controllers\PolaznikController.cs" />
     <Compile Include="Controllers\StrucnaSpremaController.cs" />
     <Compile Include="Controllers\OpstinaController.cs" />
+    <Compile Include="Custom\Auth\CookieResolver.cs" />
+    <Compile Include="Custom\Auth\CustomPrincipal.cs" />
+    <Compile Include="Custom\Auth\CustomPrincipalSerializeModel.cs" />
     <Compile Include="Custom\Extensions\ModelStateExtensions.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\KorakViewModel.cs" />
+    <Compile Include="Models\ObrazovneUstanoveLoginViewModel.cs" />
+    <Compile Include="Models\PolaznikViewModel.cs" />
     <Compile Include="Models\KorisnikViewModel.cs" />
     <Compile Include="Models\PrijavaIndexViewModel.cs" />
     <Compile Include="Models\StepTwoViewModel.cs" />
     <Compile Include="Models\StepOneViewModel.cs" />
+    <Compile Include="Models\TestViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -7043,7 +7051,9 @@
     <Content Include="Scripts\respond.matchmedia.addListener.min.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -7084,6 +7094,9 @@
     <Content Include="Views\Home\Wizard.cshtml" />
     <Content Include="Views\Home\StepOne.cshtml" />
     <Content Include="Views\Home\StepTwo.cshtml" />
+    <Content Include="Views\Home\Test.cshtml" />
+    <Content Include="Views\Polaznik\Index.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

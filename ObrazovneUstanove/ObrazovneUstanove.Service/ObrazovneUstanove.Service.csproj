@@ -53,6 +53,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="PolaznikService.cs" />
     <Compile Include="KorisnikService.cs" />
     <Compile Include="NaseljenoMjestoService.cs" />
     <Compile Include="OpstinaService.cs" />

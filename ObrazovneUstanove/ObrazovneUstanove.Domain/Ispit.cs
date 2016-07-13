@@ -25,7 +25,7 @@ namespace ObrazovneUstanove.Domain
         public decimal? BrojBodova { get; set; } // BrojBodova
 
         // Foreign keys
-        public virtual Kur Kur { get; set; } // FK_Ispit_Kurs
+        public virtual Kurs Kurs { get; set; } // FK_Ispit_Kurs
         public virtual Polaznik Polaznik { get; set; } // FK_Ispit_Polaznik
 
         public Ispit()

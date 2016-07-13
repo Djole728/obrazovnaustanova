@@ -15,14 +15,14 @@ namespace ObrazovneUstanove.Domain
 
     // Kurs
     [System.CodeDom.Compiler.GeneratedCode("EF.Reverse.POCO.Generator", "2.20.1.0")]
-    public partial class KurMap : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<Kur>
+    public partial class KursMap : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<Kurs>
     {
-        public KurMap()
+        public KursMap()
             : this("dbo")
         {
         }
 
-        public KurMap(string schema)
+        public KursMap(string schema)
         {
             ToTable(schema + ".Kurs");
             HasKey(x => x.KursId);

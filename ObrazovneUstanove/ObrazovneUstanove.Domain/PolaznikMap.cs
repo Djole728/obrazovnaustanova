@@ -24,25 +24,30 @@ namespace ObrazovneUstanove.Domain
 
         public PolaznikMap(string schema)
         {
+            this.Map<Polaznik>(t => t.Requires("IsDeleted").HasValue(false)).Ignore(t => t.IsDeleted);
             ToTable(schema + ".Polaznik");
             HasKey(x => x.PolaznikId);
 
             Property(x => x.PolaznikId).HasColumnName(@"PolaznikId").IsRequired().HasColumnType("int").HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.Identity);
             Property(x => x.Ime).HasColumnName(@"Ime").IsRequired().HasColumnType("nvarchar").HasMaxLength(200);
             Property(x => x.Prezime).HasColumnName(@"Prezime").IsRequired().HasColumnType("nvarchar").HasMaxLength(200);
-            Property(x => x.ImeJednogRoditelja).HasColumnName(@"ImeJednogRoditelja").IsOptional().HasColumnType("int");
-            Property(x => x.DatumRodjenja).HasColumnName(@"DatumRodjenja").IsOptional().HasColumnType("date");
-            Property(x => x.MjestoRodjenjaOpstinaId).HasColumnName(@"MjestoRodjenjaOpstinaId").IsOptional().HasColumnType("int");
-            Property(x => x.PrebivalisteNaseljenoMjestoId).HasColumnName(@"PrebivalisteNaseljenoMjestoId").IsOptional().HasColumnType("int");
-            Property(x => x.StrucnaSpremaId).HasColumnName(@"StrucnaSpremaId").IsOptional().HasColumnType("smallint");
-            Property(x => x.Zanimanje).HasColumnName(@"Zanimanje").IsOptional().HasColumnType("int");
+            Property(x => x.ImeJednogRoditelja).HasColumnName(@"ImeJednogRoditelja").IsOptional().HasColumnType("nvarchar").HasMaxLength(200);
+            Property(x => x.DatumRodjenja).HasColumnName(@"DatumRodjenja").IsRequired().HasColumnType("date");
+            Property(x => x.MjestoRodjenjaOpstinaId).HasColumnName(@"MjestoRodjenjaOpstinaId").IsRequired().HasColumnType("int");
+            Property(x => x.PrebivalisteNaseljenoMjestoId).HasColumnName(@"PrebivalisteNaseljenoMjestoId").IsRequired().HasColumnType("int");
+            Property(x => x.StrucnaSpremaId).HasColumnName(@"StrucnaSpremaId").IsRequired().HasColumnType("smallint");
+            Property(x => x.Zanimanje).HasColumnName(@"Zanimanje").IsRequired().HasColumnType("nvarchar").HasMaxLength(200);
             Property(x => x.SkolaId).HasColumnName(@"SkolaId").IsRequired().HasColumnType("int");
+            Property(x => x.DatumKreiranja).HasColumnName(@"DatumKreiranja").IsRequired().HasColumnType("datetime");
+            Property(x => x.RadnikIdKreirao).HasColumnName(@"RadnikIdKreirao").IsRequired().HasColumnType("int");
+            
+            Property(x => x.Pol).HasColumnName(@"Pol").IsRequired().IsFixedLength().HasColumnType("nchar").HasMaxLength(1);
 
             // Foreign keys
-            HasOptional(a => a.NaseljnoMjesto).WithMany(b => b.Polazniks).HasForeignKey(c => c.PrebivalisteNaseljenoMjestoId).WillCascadeOnDelete(false); // FK_Polaznik_NaseljnoMjesto
-            HasOptional(a => a.Opstina).WithMany(b => b.Polazniks).HasForeignKey(c => c.MjestoRodjenjaOpstinaId).WillCascadeOnDelete(false); // FK_Polaznik_Opstina
-            HasOptional(a => a.StrucnaSprema).WithMany(b => b.Polazniks).HasForeignKey(c => c.StrucnaSpremaId).WillCascadeOnDelete(false); // FK_Polaznik_StrucnaSprema
+            HasRequired(a => a.NaseljnoMjesto).WithMany(b => b.Polazniks).HasForeignKey(c => c.PrebivalisteNaseljenoMjestoId).WillCascadeOnDelete(false); // FK_Polaznik_NaseljnoMjesto
+            HasRequired(a => a.Opstina).WithMany(b => b.Polazniks).HasForeignKey(c => c.MjestoRodjenjaOpstinaId).WillCascadeOnDelete(false); // FK_Polaznik_Opstina
             HasRequired(a => a.Skola).WithMany(b => b.Polazniks).HasForeignKey(c => c.SkolaId).WillCascadeOnDelete(false); // FK_Polaznik_Skola
+            HasRequired(a => a.StrucnaSprema).WithMany(b => b.Polazniks).HasForeignKey(c => c.StrucnaSpremaId).WillCascadeOnDelete(false); // FK_Polaznik_StrucnaSprema
             InitializePartial();
         }
         partial void InitializePartial();

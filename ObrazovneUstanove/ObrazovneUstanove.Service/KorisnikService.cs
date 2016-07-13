@@ -14,6 +14,7 @@ namespace ObrazovneUstanove.Service
         bool Delete(int id);
         void Update(Korisnik t);
         int AddGetId(Korisnik t);
+        Korisnik GetByUserNameUndPassword(string userName, string password);
     }
 
     public class KorisnikService : IKorisnikService
@@ -66,6 +67,11 @@ namespace ObrazovneUstanove.Service
             _context.SaveChanges();
 
             return t.KorisnikId;
+        }
+
+        public Korisnik GetByUserNameUndPassword(string userName, string password)
+        {
+            return _context.Korisniks.FirstOrDefault(o => o.Ime == userName && o.Prezime == password);
         }
     }
 }

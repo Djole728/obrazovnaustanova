@@ -3,6 +3,7 @@ using Autofac.Integration.Mvc;
 using System.Web.Mvc;
 using ObrazovneUstanove.Domain;
 using ObrazovneUstanove.Service;
+using ObrazovneUstanove.UI.Custom.Auth;
 
 namespace ObrazovneUstanove.UI
 {
@@ -32,6 +33,8 @@ namespace ObrazovneUstanove.UI
             containerBuilder.RegisterType<NaseljenoMjestoService>().As<INaseljenoMjestoService>().PropertiesAutowired().InstancePerRequest();
             containerBuilder.RegisterType<OpstinaService>().As<IOpstinaService>().PropertiesAutowired().InstancePerRequest();
             containerBuilder.RegisterType<StrucnaSpremaService>().As<IStrucnaSpremaService>().PropertiesAutowired().InstancePerRequest();
+            containerBuilder.RegisterType<PolaznikService>().As<IPolaznikService>().PropertiesAutowired().InstancePerRequest();
+            containerBuilder.RegisterType<CookieResolver>().As<ICookieResolver>().PropertiesAutowired().InstancePerRequest();
         }
     }
 }
