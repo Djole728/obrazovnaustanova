@@ -24,7 +24,7 @@ namespace ObrazovneUstanove.Domain
 
         public KorisnikSkolaUlogaMap(string schema)
         {
-            ToTable(schema + ".KorisnikSkolaUloga");
+		            ToTable(schema + ".KorisnikSkolaUloga");
             HasKey(x => x.KorisnikSkolaUlogaId);
 
             Property(x => x.KorisnikId).HasColumnName(@"KorisnikId").IsRequired().HasColumnType("int");

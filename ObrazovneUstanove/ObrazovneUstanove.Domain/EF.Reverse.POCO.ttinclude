@@ -984,6 +984,9 @@ if(IncludeComments != CommentsStyle.None){#>    // <#=tbl.Name#>
 
         public <#=tbl.NameHumanCase + ConfigurationClassName#>(string schema)
         {
+		<# if(tbl.Columns.Any(p => p.Name == "IsDeleted"))#>
+   Map<Polaznik>(t => t.Requires("IsDeleted").HasValue(false)).Ignore(t => t.IsDeleted);
+
 <# if (!string.IsNullOrEmpty(tbl.Schema)) { #>
             ToTable(schema + ".<#=tbl.Name#>");
 <# } else { #>
@@ -992,7 +995,7 @@ if(IncludeComments != CommentsStyle.None){#>    // <#=tbl.Name#>
             HasKey(<#=tbl.PrimaryKeyNameHumanCase()#>);
 
 <#
-foreach(Column col in tbl.Columns.Where(x => !x.Hidden).OrderBy(x => x.Ordinal))
+foreach(Column col in tbl.Columns.Where(x => !x.Hidden && x.Name != "IsDeleted").OrderBy(x => x.Ordinal))
 {
 #>
             <#=col.Config #>

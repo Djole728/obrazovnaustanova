@@ -24,7 +24,7 @@ namespace ObrazovneUstanove.Domain
 
         public ObukaMap(string schema)
         {
-            ToTable(schema + ".Obuka");
+		            ToTable(schema + ".Obuka");
             HasKey(x => x.ObukaId);
 
             Property(x => x.ObukaId).HasColumnName(@"ObukaId").IsRequired().HasColumnType("int").HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.Identity);

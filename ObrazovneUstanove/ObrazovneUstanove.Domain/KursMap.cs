@@ -24,7 +24,7 @@ namespace ObrazovneUstanove.Domain
 
         public KursMap(string schema)
         {
-            ToTable(schema + ".Kurs");
+		            ToTable(schema + ".Kurs");
             HasKey(x => x.KursId);
 
             Property(x => x.KursId).HasColumnName(@"KursId").IsRequired().HasColumnType("int").HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.Identity);

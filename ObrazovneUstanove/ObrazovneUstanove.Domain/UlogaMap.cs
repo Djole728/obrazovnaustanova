@@ -24,7 +24,7 @@ namespace ObrazovneUstanove.Domain
 
         public UlogaMap(string schema)
         {
-            ToTable(schema + ".Uloga");
+		            ToTable(schema + ".Uloga");
             HasKey(x => x.UlogaId);
 
             Property(x => x.UlogaId).HasColumnName(@"UlogaId").IsRequired().HasColumnType("int").HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.None);

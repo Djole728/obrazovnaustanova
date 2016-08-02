@@ -24,7 +24,7 @@ namespace ObrazovneUstanove.Domain
 
         public StrucnaSpremaMap(string schema)
         {
-            ToTable(schema + ".StrucnaSprema");
+		            ToTable(schema + ".StrucnaSprema");
             HasKey(x => x.StrucnaSpremaId);
 
             Property(x => x.StrucnaSpremaId).HasColumnName(@"StrucnaSpremaId").IsRequired().HasColumnType("smallint").HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.None);

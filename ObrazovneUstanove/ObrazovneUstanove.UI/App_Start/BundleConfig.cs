@@ -30,6 +30,7 @@ namespace ObrazovneUstanove.UI
             bundles.Add(new ScriptBundle("~/bundles/jTable").Include(
                      "~/Scripts/jquery-ui-1.11.3.js",
                      "~/Scripts/jtable/jquery.jtable.js",
+                     "~/Scripts/jquery.ui.datepicker-sr-SR.js",
                      "~/Scripts/jtable/localization/jquery.jtable.sr.js",
                      "~/Scripts/jtable/extensions/jquery.jtable.multiple-key-fields.js",
                     "~/Scripts/jtable/extensions/jtable-extension.js",

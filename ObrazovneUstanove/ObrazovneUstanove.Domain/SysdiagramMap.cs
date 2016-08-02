@@ -24,7 +24,7 @@ namespace ObrazovneUstanove.Domain
 
         public SysdiagramMap(string schema)
         {
-            ToTable(schema + ".sysdiagrams");
+		            ToTable(schema + ".sysdiagrams");
             HasKey(x => x.DiagramId);
 
             Property(x => x.Name).HasColumnName(@"name").IsRequired().HasColumnType("nvarchar").HasMaxLength(128);

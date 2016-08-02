@@ -1527,6 +1527,7 @@
 /// <reference path="../assets/vendors/validator/validator.js" />
 /// <reference path="ai.0.22.9-build00167.js" />
 /// <reference path="bootstrap.js" />
+/// <reference path="jquery.ui.datepicker-sr-sr.js" />
 /// <reference path="jquery.validate.js" />
 /// <reference path="jquery.validate.unobtrusive.js" />
 /// <reference path="jquery-2.2.4.js" />

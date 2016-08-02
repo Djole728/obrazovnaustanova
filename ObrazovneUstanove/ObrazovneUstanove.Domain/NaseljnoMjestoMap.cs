@@ -24,7 +24,7 @@ namespace ObrazovneUstanove.Domain
 
         public NaseljnoMjestoMap(string schema)
         {
-            ToTable(schema + ".NaseljnoMjesto");
+		            ToTable(schema + ".NaseljnoMjesto");
             HasKey(x => x.NaseljenoMjestoId);
 
             Property(x => x.NaseljenoMjestoId).HasColumnName(@"NaseljenoMjestoId").IsRequired().HasColumnType("int").HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.None);

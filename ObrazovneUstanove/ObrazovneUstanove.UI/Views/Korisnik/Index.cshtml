@@ -1,9 +1,9 @@
 ﻿
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Korisnici";
 }
 
-<h2>Index</h2>
+<h2>Korisnici</h2>
 
 <div id="jTableContainer">
 </div>
@@ -78,6 +78,9 @@
                     Zanimanje: {
                         title: 'Zanimanje',                       
                     },
+                },
+                formCreated: function (event, data) {
+                    data.form.closest('.ui-dialog .ui-dialog-content').css('overflow', 'visible');                   
                 },
             });
             $('#jTableContainer').jtable('load');

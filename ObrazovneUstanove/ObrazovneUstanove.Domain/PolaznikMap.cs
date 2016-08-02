@@ -24,7 +24,8 @@ namespace ObrazovneUstanove.Domain
 
         public PolaznikMap(string schema)
         {
-            this.Map<Polaznik>(t => t.Requires("IsDeleted").HasValue(false)).Ignore(t => t.IsDeleted);
+		   Map<Polaznik>(t => t.Requires("IsDeleted").HasValue(false)).Ignore(t => t.IsDeleted);
+
             ToTable(schema + ".Polaznik");
             HasKey(x => x.PolaznikId);
 
@@ -40,7 +41,6 @@ namespace ObrazovneUstanove.Domain
             Property(x => x.SkolaId).HasColumnName(@"SkolaId").IsRequired().HasColumnType("int");
             Property(x => x.DatumKreiranja).HasColumnName(@"DatumKreiranja").IsRequired().HasColumnType("datetime");
             Property(x => x.RadnikIdKreirao).HasColumnName(@"RadnikIdKreirao").IsRequired().HasColumnType("int");
-            
             Property(x => x.Pol).HasColumnName(@"Pol").IsRequired().IsFixedLength().HasColumnType("nchar").HasMaxLength(1);
 
             // Foreign keys

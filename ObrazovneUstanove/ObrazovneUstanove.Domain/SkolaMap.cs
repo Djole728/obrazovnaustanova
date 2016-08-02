@@ -24,7 +24,7 @@ namespace ObrazovneUstanove.Domain
 
         public SkolaMap(string schema)
         {
-            ToTable(schema + ".Skola");
+		            ToTable(schema + ".Skola");
             HasKey(x => x.SkolaId);
 
             Property(x => x.SkolaId).HasColumnName(@"SkolaId").IsRequired().HasColumnType("int").HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.Identity);

@@ -24,7 +24,7 @@ namespace ObrazovneUstanove.Domain
 
         public IspitMap(string schema)
         {
-            ToTable(schema + ".Ispit");
+		            ToTable(schema + ".Ispit");
             HasKey(x => x.IspitId);
 
             Property(x => x.IspitId).HasColumnName(@"IspitId").IsRequired().HasColumnType("int").HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.Identity);

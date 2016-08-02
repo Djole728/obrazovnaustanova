@@ -24,7 +24,7 @@ namespace ObrazovneUstanove.Domain
 
         public OpstinaMap(string schema)
         {
-            ToTable(schema + ".Opstina");
+		            ToTable(schema + ".Opstina");
             HasKey(x => x.OpstinaId);
 
             Property(x => x.OpstinaId).HasColumnName(@"OpstinaId").IsRequired().HasColumnType("int").HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.None);

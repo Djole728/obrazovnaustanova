@@ -24,7 +24,7 @@ namespace ObrazovneUstanove.Domain
 
         public KorisnikMap(string schema)
         {
-            ToTable(schema + ".Korisnik");
+		            ToTable(schema + ".Korisnik");
             HasKey(x => x.KorisnikId);
 
             Property(x => x.KorisnikId).HasColumnName(@"KorisnikId").IsRequired().HasColumnType("int").HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.Identity);
